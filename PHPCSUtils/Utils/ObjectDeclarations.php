@@ -433,8 +433,13 @@ final class ObjectDeclarations
     /**
      * Retrieve all properties declared in an OO structure.
      *
-     * Note: interfaces and enums cannot contain properties. This method does not take this into
-     * account to allow sniffs to flag this kind of incorrect PHP code.
+     * Notes:
+     * - Properties declared via PHP 8.0+ contructor property promotion **will** be included
+     *   in the return value.
+     *   However, keep in mind that passing the stack pointer of such a property to the
+     *   {@see Variables::getMemberProperties()} method is not supported.
+     * - Interfaces and enums cannot contain properties. This method does not take this into
+     *   account to allow sniffs to flag this kind of incorrect PHP code.
      *
      * @since 1.1.0
      *
