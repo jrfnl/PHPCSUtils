@@ -43,31 +43,33 @@ use PHPCSUtils\Tokens\Collections;
  *
  * @since 1.0.0
  *
- * @method static array arithmeticTokens()         Tokens that represent arithmetic operators.
- * @method static array assignmentTokens()         Tokens that represent assignments.
- * @method static array blockOpeners()             Tokens that open code blocks.
- * @method static array booleanOperators()         Tokens that perform boolean operations.
- * @method static array bracketTokens()            Tokens that represent brackets and parenthesis.
- * @method static array castTokens()               Tokens that represent type casting.
- * @method static array commentTokens()            Tokens that are comments.
- * @method static array comparisonTokens()         Tokens that represent comparison operator.
- * @method static array contextSensitiveKeywords() Tokens representing context sensitive keywords in PHP.
- * @method static array emptyTokens()              Tokens that don't represent code.
- * @method static array equalityTokens()           Tokens that represent equality comparisons.
- * @method static array heredocTokens()            Tokens that make up a heredoc string.
- * @method static array includeTokens()            Tokens that include files.
- * @method static array magicConstants()           Tokens representing PHP magic constants.
- * @method static array methodPrefixes()           Tokens that can prefix a method name.
- * @method static array ooScopeTokens()            Tokens that open class and object scopes.
- * @method static array operators()                Tokens that perform operations.
- * @method static array parenthesisOpeners()       Token types that open parenthesis.
- * @method static array phpcsCommentTokens()       Tokens that are comments containing PHPCS instructions.
- * @method static array scopeModifiers()           Tokens that represent scope modifiers.
- * @method static array scopeOpeners()             Tokens that are allowed to open scopes.
- * @method static array stringTokens()             Tokens that represent strings.
- *                                                 Note that `T_STRING`s are NOT represented in this list as this list
- *                                                 is about _text_ strings.
- * @method static array textStringTokens()         Tokens that represent text strings.
+ * @method static array<int|string, int|string> arithmeticTokens()         Tokens that represent arithmetic operators.
+ * @method static array<int|string, int|string> assignmentTokens()         Tokens that represent assignments.
+ * @method static array<int|string, int|string> blockOpeners()             Tokens that open code blocks.
+ * @method static array<int|string, int|string> booleanOperators()         Tokens that perform boolean operations.
+ * @method static array<int|string, int|string> bracketTokens()            Tokens that represent brackets and parenthesis.
+ * @method static array<int|string, int|string> castTokens()               Tokens that represent type casting.
+ * @method static array<int|string, int|string> commentTokens()            Tokens that are comments.
+ * @method static array<int|string, int|string> comparisonTokens()         Tokens that represent comparison operator.
+ * @method static array<int|string, int|string> contextSensitiveKeywords() Tokens representing context sensitive keywords
+ *                                                                         in PHP.
+ * @method static array<int|string, int|string> emptyTokens()              Tokens that don't represent code.
+ * @method static array<int|string, int|string> equalityTokens()           Tokens that represent equality comparisons.
+ * @method static array<int|string, int|string> heredocTokens()            Tokens that make up a heredoc string.
+ * @method static array<int|string, int|string> includeTokens()            Tokens that include files.
+ * @method static array<int|string, int|string> magicConstants()           Tokens representing PHP magic constants.
+ * @method static array<int|string, int|string> methodPrefixes()           Tokens that can prefix a method name.
+ * @method static array<int|string, int|string> ooScopeTokens()            Tokens that open class and object scopes.
+ * @method static array<int|string, int|string> operators()                Tokens that perform operations.
+ * @method static array<int|string, int|string> parenthesisOpeners()       Token types that open parenthesis.
+ * @method static array<int|string, int|string> phpcsCommentTokens()       Tokens that are comments containing PHPCS
+ *                                                                         instructions.
+ * @method static array<int|string, int|string> scopeModifiers()           Tokens that represent scope modifiers.
+ * @method static array<int|string, int|string> scopeOpeners()             Tokens that are allowed to open scopes.
+ * @method static array<int|string, int|string> stringTokens()             Tokens that represent strings.
+ *                                                                         Note that `T_STRING`s are NOT represented in this
+ *                                                                         list as this list is about _text_ strings.
+ * @method static array<int|string, int|string> textStringTokens()         Tokens that represent text strings.
  */
 final class BCTokens
 {
