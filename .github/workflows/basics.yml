@@ -92,7 +92,7 @@ jobs:
     name: "PHPStan"
     uses: PHPCSStandards/.github/.github/workflows/reusable-phpstan.yml@main
     with:
-      phpstanVersion: '1.x'
+      phpstanVersion: '2.x'
 
   markdownlint:
     name: 'Lint Markdown'

@@ -127,7 +127,7 @@ final class GetAssignmentsTest extends PolyfilledTestCase
      *
      * @see testGetAssignments() For the array format.
      *
-     * @return array<string, array<string, int|string|array<int, array<string, int|string|bool>>>>
+     * @return array<string, array<string, int|string|array<int|string, int|string|array<string, int|string|bool>>>>
      */
     public static function dataGetAssignments()
     {
