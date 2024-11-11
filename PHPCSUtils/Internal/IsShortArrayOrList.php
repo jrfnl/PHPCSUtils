@@ -163,7 +163,7 @@ final class IsShortArrayOrList
      *
      * @var string
      */
-    private $phpcsVersion; // @phpstan-ignore-line
+    private $phpcsVersion; // @phpstan-ignore property.onlyWritten
 
     /**
      * Tokens which can open a short array or short list (PHPCS cross-version compatible).
