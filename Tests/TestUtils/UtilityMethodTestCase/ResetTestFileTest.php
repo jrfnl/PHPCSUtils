@@ -28,6 +28,10 @@ final class ResetTestFileTest extends PolyfilledTestCase
     /**
      * Overload the "normal" set up as it needs to be run from within the actual test(s) to ensure we have a valid test.
      *
+     * Note: We don't rely on this method being called "before class" as the tests in this class reset the statics on
+     * the UtilityMethodTestCase, so we need to be sure the static $caseFile property is set (again) before parsing
+     * a file and do that by calling this method directly from within each of the tests.
+     *
      * @beforeClass
      *
      * @return void
@@ -36,6 +40,20 @@ final class ResetTestFileTest extends PolyfilledTestCase
     {
         self::$caseFile = __DIR__ . '/SetUpTestFileTest.inc';
         // Deliberately not running the actual setUpTestFile() method.
+    }
+
+    /**
+     * Overload the "normal" test marker QA check - this test class resets the property containing the File object,
+     * so there will be no valid File + the case file is already validated in the `SetUpTestFileTest` class anyway.
+     *
+     * @coversNothing
+     * @doesNotPerformAssertions
+     *
+     * @return void
+     */
+    public function testTestMarkersAreUnique()
+    {
+        // Deliberately left empty.
     }
 
     /**
@@ -48,6 +66,7 @@ final class ResetTestFileTest extends PolyfilledTestCase
         // Initialize a test, which should change the values of most static properties.
         self::$tabWidth      = 2;
         self::$selectedSniff = ['Test.Test.Test'];
+        self::setUpTestFile();
         parent::setUpTestFile();
 
         // Verify that (most) properties no longer have their original value.

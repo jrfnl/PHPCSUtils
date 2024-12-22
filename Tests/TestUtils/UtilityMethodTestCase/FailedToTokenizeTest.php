@@ -36,6 +36,19 @@ final class FailedToTokenizeTest extends PolyfilledTestCase
     }
 
     /**
+     * Overload the "normal" test marker QA check - this test class does not have a valid File object.
+     *
+     * @coversNothing
+     * @doesNotPerformAssertions
+     *
+     * @return void
+     */
+    public function testTestMarkersAreUnique()
+    {
+        // Deliberately left empty.
+    }
+
+    /**
      * Test that the setUpTestFile() fails a test when the tokenizer errored out.
      *
      * @return void
