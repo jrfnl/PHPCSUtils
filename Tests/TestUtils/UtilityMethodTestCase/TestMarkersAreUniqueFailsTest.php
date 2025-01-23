@@ -15,47 +15,22 @@ use PHPCSUtils\Tests\PolyfilledTestCase;
 /**
  * Tests for the \PHPCSUtils\TestUtils\UtilityMethodTestCase class.
  *
- * @covers \PHPCSUtils\TestUtils\UtilityMethodTestCase::setUpTestFile
- * @covers \PHPCSUtils\TestUtils\UtilityMethodTestCase::parseFile
+ * @covers \PHPCSUtils\TestUtils\UtilityMethodTestCase::testTestMarkersAreUnique
+ * @covers \PHPCSUtils\TestUtils\UtilityMethodTestCase::assertTestMarkersAreUnique
  *
- * @since 1.0.0
+ * @since 1.1.0
  */
-final class MissingCaseFileTest extends PolyfilledTestCase
+final class TestMarkersAreUniqueFailsTest extends PolyfilledTestCase
 {
 
     /**
-     * Overload the "normal" set up.
-     *
-     * @beforeClass
-     *
-     * @return void
-     */
-    public static function setUpTestFile()
-    {
-        // Deliberately left empty.
-    }
-
-    /**
-     * Overload the "normal" test marker QA check - this test class does not have a File object.
-     *
-     * @coversNothing
-     * @doesNotPerformAssertions
+     * Overload the "normal" test marker QA check - this test class does not have a valid File object.
      *
      * @return void
      */
     public function testTestMarkersAreUnique()
     {
-        // Deliberately left empty.
-    }
-
-    /**
-     * Test that the setUpTestFile() fails a test when the test case file is missing.
-     *
-     * @return void
-     */
-    public function testMissingCaseFile()
-    {
-        $msg       = 'Test case file missing. Expected case file location: ';
+        $msg       = "Duplicate test markers found.\nFailed asserting that ";
         $exception = 'PHPUnit\Framework\AssertionFailedError';
         if (\class_exists('PHPUnit_Framework_AssertionFailedError')) {
             // PHPUnit < 6.
@@ -65,6 +40,6 @@ final class MissingCaseFileTest extends PolyfilledTestCase
         $this->expectException($exception);
         $this->expectExceptionMessage($msg);
 
-        parent::setUpTestFile();
+        parent::testTestMarkersAreUnique();
     }
 }

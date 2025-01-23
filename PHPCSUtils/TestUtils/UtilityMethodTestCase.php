@@ -379,6 +379,57 @@ abstract class UtilityMethodTestCase extends TestCase
     }
 
     /**
+     * Test QA: verify that a test case file does not contain any duplicate test markers.
+     *
+     * When a test case file contains a lot of test cases, it is easy to overlook that a test marker name
+     * is already in use.
+     * A test wouldn't necessarily fail on this, but would not be testing what is intended to be tested as
+     * it would be verifying token properties for the wrong token.
+     *
+     * This test safeguards against this.
+     *
+     * @since 1.1.0
+     *
+     * @coversNothing
+     *
+     * @return void
+     */
+    public function testTestMarkersAreUnique()
+    {
+        $this->assertTestMarkersAreUnique(self::$phpcsFile);
+    }
+
+    /**
+     * Assertion to verify that a test case file does not contain any duplicate test markers.
+     *
+     * @since 1.1.0
+     *
+     * @param \PHP_CodeSniffer\Files\File $phpcsFile The file to validate.
+     *
+     * @return void
+     */
+    public static function assertTestMarkersAreUnique(File $phpcsFile)
+    {
+        $tokens = $phpcsFile->getTokens();
+
+        // Collect all marker comments in the file.
+        $seenComments = [];
+        for ($i = 0; $i < $phpcsFile->numTokens; $i++) {
+            if ($tokens[$i]['code'] !== \T_COMMENT) {
+                continue;
+            }
+
+            if (\stripos($tokens[$i]['content'], '/* test') !== 0) {
+                continue;
+            }
+
+            $seenComments[] = $tokens[$i]['content'];
+        }
+
+        self::assertSame(\array_unique($seenComments), $seenComments, 'Duplicate test markers found.');
+    }
+
+    /**
      * Get the token pointer for a target token based on a specific comment.
      *
      * Note: the test delimiter comment MUST start with `/* test` to allow this function to

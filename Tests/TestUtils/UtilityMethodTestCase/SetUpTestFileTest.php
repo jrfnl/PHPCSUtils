@@ -38,6 +38,22 @@ final class SetUpTestFileTest extends PolyfilledTestCase
     }
 
     /**
+     * Overload the "normal" test marker QA check - this test class does not have a File object in the $phpcsFile property.
+     *
+     * @coversNothing
+     *
+     * @return void
+     */
+    public function testTestMarkersAreUnique()
+    {
+        parent::setUpTestFile();
+
+        $this->assertTestMarkersAreUnique(self::$phpcsFile);
+
+        parent::resetTestFile();
+    }
+
+    /**
      * Test that the setUpTestFile() method works correctly.
      *
      * @return void

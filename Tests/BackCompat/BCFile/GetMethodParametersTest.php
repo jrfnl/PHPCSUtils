@@ -1226,8 +1226,8 @@ class GetMethodParametersTest extends PolyfilledTestCase
         $expected[1] = [
             'token'               => ($php8Names === true) ? 28 : 29,
             'name'                => '$b',
-            'content'             => "\$b /* test */ = /* test */ 'default' /* test*/",
-            'default'             => "'default' /* test*/",
+            'content'             => "\$b /* comment */ = /* comment */ 'default' /* comment*/",
+            'default'             => "'default' /* comment*/",
             'default_token'       => ($php8Names === true) ? 36 : 37,
             'default_equal_token' => ($php8Names === true) ? 32 : 33,
             'has_attributes'      => false,
